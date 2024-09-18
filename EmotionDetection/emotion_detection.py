@@ -33,12 +33,15 @@ def emotion_detector(text_to_analyse):
 
      # If the response status code is 200, extract the score from the response_in_json 
     if response.status_code == 200:
-        emotion_score
+        # Getting the key with maximum value  
+        Key_max = max(zip(emotion_score.values(), emotion_score.keys()))[1]   
+        emotion_score['dominant_emotion'] = Key_max 
+        
     # If the response status code is 500 , set score to None
     else:
         emotion_score = {
-            'anger': none, 'disgust': none,
-            'fear': none, 'joy': none, 'sadness': none
+            'anger': none, 'disgust': none,'fear': none, 'joy': none, 
+            'sadness': none, 'dominant_emotion': none
             }
     # Returning a dictionary containing sentiment analysis results
     return emotion_score
