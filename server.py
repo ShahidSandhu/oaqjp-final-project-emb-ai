@@ -6,7 +6,6 @@
 from flask import Flask, render_template, request
 from EmotionDetection.emotion_detection import emotion_detector
 
-#Initiate the flask app
 app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector")
@@ -29,11 +28,12 @@ def sent_analyzer():
     sadness = response['sadness']
     dominant_emotion = response['dominant_emotion']
     if dominant_emotion is None:
-        return ("Invalid text! Please try again!.")
+        return "Invalid text! Please try again!."
 
     return (
         f"For the given statement, the system response is 'anger':"
-        f"{anger}, 'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} and 'sadness': {sadness}. " 
+        f"{anger}, 'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} and "\
+        f"'sadness': {sadness}. " 
         f"The dominant emotion is {dominant_emotion}."
     )
 
